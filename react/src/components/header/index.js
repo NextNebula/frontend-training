@@ -1,10 +1,21 @@
-import React from 'react';
+import { Link } from "react-router-dom";
+import "./header.css"
 
-function Header() {
-
+const Header = () => {
     return (
-        <header className="flex justify-center mb-4 py-2 bg-blue-500">
-            <div className="text-white text-2xl font-medium">Podcasts</div>
+        <header className="mb-4 bg-blue-500">
+            <div className="container mx-auto">
+                <nav>
+                    <ul className="flex py-2">
+                        <li>
+                            <Link to="/" className="nav-link">Home</Link>
+                        </li>
+                        <li>
+                            <Link to="/search" className="nav-link">Search</Link>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </header>
     )
 }

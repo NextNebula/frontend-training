@@ -1,0 +1,7 @@
+.nav-link {
+    @apply text-white text-xl p-2;
+}
+
+.nav-link:hover {
+    @apply bg-blue-700;
+}
