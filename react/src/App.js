@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { getAll } from "./services/getService";
 import "./App.css";
+import Header from "./components/header";
 
 function App() {
-  
   const [data, setData] = useState([]);
   
   useEffect(() => {
@@ -16,10 +16,7 @@ function App() {
 
   return (
     <div className="App">
-      <header>
-        <h1>Jobify</h1>
-        <pre>Find your dream job.</pre>
-      </header>
+      <Header/>
       <div className="bg-indigo-200" style={{ margin: "0 auto", width: "50%" }}>
         <pre style={{ textAlign: "initial" }}>
           {JSON.stringify(data, null, "\t")}
