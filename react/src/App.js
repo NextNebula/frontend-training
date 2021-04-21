@@ -20,7 +20,7 @@ function App() {
         <h1>Jobify</h1>
         <pre>Find your dream job.</pre>
       </header>
-      <div style={{ margin: "0 auto", width: "50%", backgroundColor: "lightblue" }}>
+      <div className="bg-indigo-200" style={{ margin: "0 auto", width: "50%" }}>
         <pre style={{ textAlign: "initial" }}>
           {JSON.stringify(data, null, "\t")}
         </pre>
