@@ -16,12 +16,15 @@ async function fetchResults(url, message = "") {
   return result;
 }
 
-const getAll = async () => await fetchResults(jobsUrl, `Oops... no results found.`);
-const getById = async (id) => await fetchResults(`${jobsUrl}/${id}`, `Oops... result with id: ${id} is not found`);
-const getByCategory = async (category) => await fetchResults(`${jobsUrl}?category=${category}`, `Oops... no results found with category id: ${id}`);
+// const getAll = async () => await fetchResults(jobsUrl, `Oops... no results found.`);
+// const getById = async (id) => await fetchResults(`${jobsUrl}/${id}`, `Oops... result with id: ${id} is not found`);
+// const getByCategory = async (category) => await fetchResults(`${jobsUrl}?category=${category}`, `Oops... no results found with category id: ${id}`);
+
+const searchPodcast = async() => await fetchResults("https://itunes.apple.com/search?entity=podcast&term=daily");
 
 module.exports = {
-  getAll: getAll,
-  getById: getById,
-  getByCategory: getByCategory,
+  // getAll: getAll,
+  // getById: getById,
+  // getByCategory: getByCategory,
+  searchPodcast: searchPodcast,
 }
