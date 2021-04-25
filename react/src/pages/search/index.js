@@ -20,11 +20,20 @@ const Search = () => {
 
     return (
         <>
-            <h1>Search</h1>
+            <h1 className="mb-2">Search for a podcast</h1>
             <input
+              class="w-6/12 px-2 py-1 mb-2 border border-gray-300 bg-gray-100 rounded-md outline-none focus:border-blue-500"
               type="text"
+              placeholder="Search"
               onChange={e => setQuery(e.target.value)} />
-            {results.map((result) => <div>{result.trackName}</div>)}
+            <div className="grid grid-cols-4 gap-2">
+            {results.map((result) => 
+              <div key={result.trackId}>
+                <img src={result.artworkUrl600} className="w-full rounded-md shadow"></img>
+                <div className="text-center">{result.trackName}</div>
+              </div>
+            )}
+            </div>
         </>
     )
 }
