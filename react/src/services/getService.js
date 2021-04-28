@@ -38,3 +38,13 @@ export async function getSearch(query) {
 
   return result;
 }
+
+export async function getPodcastDetails(id) {
+  const result = await fetch(`${url}/podcast/${id}`).then((response) => {
+    if (response.ok) {
+      return response.json();
+    }
+  });
+
+  return result;
+}

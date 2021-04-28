@@ -20,11 +20,13 @@ async function fetchResults(url, message = "") {
 // const getById = async (id) => await fetchResults(`${jobsUrl}/${id}`, `Oops... result with id: ${id} is not found`);
 // const getByCategory = async (category) => await fetchResults(`${jobsUrl}?category=${category}`, `Oops... no results found with category id: ${id}`);
 
-const searchPodcast = async(query) => await fetchResults(`https://itunes.apple.com/search?entity=podcast&term=${query}`);
+const searchPodcast = async (query) => await fetchResults(`https://itunes.apple.com/search?entity=podcast&term=${query}`);
+const podcastDetails = async (id) => await fetchResults(`https://itunes.apple.com/lookup?id=${id}`);
 
 module.exports = {
   // getAll: getAll,
   // getById: getById,
   // getByCategory: getByCategory,
   searchPodcast: searchPodcast,
+  podcastDetails: podcastDetails
 }

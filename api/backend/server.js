@@ -22,6 +22,7 @@ app.use(express.json());
 //   services.getByCategory(id).then(result => res.send(`${JSON.stringify(result)}`));
 // })
 
-app.get('/search/:query', (req, res) => services.searchPodcast(req.params.query).then(result => res.send(`${JSON.stringify(result)}`)))
+app.get('/search/:query', (req, res) => services.searchPodcast(req.params.query).then(result => res.send(`${JSON.stringify(result)}`)));
+app.get('/podcast/:id', (req, res) => services.podcastDetails(req.params.id).then(result => res.send(`${JSON.stringify(result)}`)))
 
 app.listen(PORT, () => console.log("Server is running on port " + PORT));
