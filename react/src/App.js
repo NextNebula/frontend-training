@@ -3,6 +3,7 @@ import Header from "./components/header";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Search from "./pages/search";
 import Home from "./pages/home";
+import Podcast from "./pages/podcast";
 
 function App() {
   return (
@@ -13,6 +14,9 @@ function App() {
           <Switch>
             <Route path="/search">
               <Search/>
+            </Route>
+            <Route path="/podcast/:id">
+              <Podcast/>
             </Route>
             <Route path="/">
               <Home/>
