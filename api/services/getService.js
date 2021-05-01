@@ -1,32 +1,36 @@
 const fetch = require("node-fetch");
 const baseUrl = process.env.DATABASE_URL;
-const jobsUrl = `${baseUrl}/jobs`;
+const dbUrl = `${baseUrl}/podcasts`;
 
-async function fetchResults(url, message = "") {
-  const result = await fetch(url).then((response) => {
+async function fetchResults(url) {
+  return await fetch(url).then((response) => {
     if (response.ok) {
       return response.json();
     }
-  }).then((response) => {
-    if(!response) {
-      return message;
-    }
-    return response
-  });
-  return result;
+  })
 }
 
-// const getAll = async () => await fetchResults(jobsUrl, `Oops... no results found.`);
-// const getById = async (id) => await fetchResults(`${jobsUrl}/${id}`, `Oops... result with id: ${id} is not found`);
-// const getByCategory = async (category) => await fetchResults(`${jobsUrl}?category=${category}`, `Oops... no results found with category id: ${id}`);
+async function postResults(url, data) {
+  return await fetch(url, 
+    {
+      method: "post",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data),
+    }).then((response) => {
+    if (response.ok) {
+      return response.json();
+    }
+  });
+}
 
 const searchPodcast = async (query) => await fetchResults(`https://itunes.apple.com/search?entity=podcast&term=${query}`);
 const podcastDetails = async (id) => await fetchResults(`https://itunes.apple.com/lookup?id=${id}`);
+const createSubscription = async (data) => await postResults(dbUrl, { id: data.id, name: "test" })
 
 module.exports = {
-  // getAll: getAll,
-  // getById: getById,
-  // getByCategory: getByCategory,
-  searchPodcast: searchPodcast,
-  podcastDetails: podcastDetails
+  searchPodcast,
+  podcastDetails,
+  createSubscription,
 }
