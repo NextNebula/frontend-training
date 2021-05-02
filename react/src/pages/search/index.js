@@ -28,7 +28,7 @@ const Search = () => {
               type="text"
               placeholder="Search"
               onChange={e => setQuery(e.target.value)} />     
-            <Grid results={results} />
+            <Grid items={results} />
         </>
     )
 }
