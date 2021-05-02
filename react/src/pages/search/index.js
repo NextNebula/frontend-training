@@ -10,7 +10,7 @@ const Search = () => {
       const timeoutId = setTimeout(async () => {
         if (query) {
           const data = await getSearch(query);
-          setResults(data.results);
+          setResults(data);
         }
         else {
           setResults([])
@@ -29,9 +29,9 @@ const Search = () => {
               onChange={e => setQuery(e.target.value)} />
             <div className="grid grid-cols-4 gap-2">
             {results.map((result) => 
-              <Link to={`podcast/${result.trackId}`} key={result.trackId}>
-                <img src={result.artworkUrl600} className="w-full rounded-md shadow" alt={result.trackName}></img>
-                <div className="text-center">{result.trackName}</div>
+              <Link to={`podcast/${result.id}`} key={result.id}>
+                <img src={result.image} className="w-full rounded-md shadow" alt={result.name}></img>
+                <div className="text-center">{result.name}</div>
               </Link>
             )}
             </div>

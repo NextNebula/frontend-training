@@ -37,7 +37,16 @@ async function postResults(url, data) {
   });
 }
 
-const searchPodcast = async (query) => await fetchResults(`https://itunes.apple.com/search?entity=podcast&term=${query}`);
+const searchPodcast = async (query) => {
+  const data = await fetchResults(`https://itunes.apple.com/search?entity=podcast&term=${query}`)
+  return data.results.map(details => {
+    return {
+      id: details?.trackId,
+      name: details?.collectionName,
+      image: details?.artworkUrl600,
+    }
+  }); 
+};
 
 const podcastDetails = async (id) => {
   const data = await fetchResults(`https://itunes.apple.com/lookup?id=${id}`);
