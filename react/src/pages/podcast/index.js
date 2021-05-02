@@ -8,8 +8,7 @@ const Podcast = () => {
 
     useEffect(() => {
         async function getData() {
-            const data = await getPodcastDetails(id);
-            setPodcast(data.results[0]);
+            setPodcast(await getPodcastDetails(id));
         }
         getData();
     }, [id])
