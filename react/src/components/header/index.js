@@ -8,7 +8,7 @@ const Header = () => {
                 <nav>
                     <ul className="flex py-2">
                         <li>
-                            <Link to="/" className="nav-link">Home</Link>
+                            <Link to="/" className="nav-link">Subscriptions</Link>
                         </li>
                         <li>
                             <Link to="/search" className="nav-link">Search</Link>

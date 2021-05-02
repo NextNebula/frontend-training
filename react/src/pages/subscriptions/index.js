@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getSubscriptions } from "../../services/getService";
 import Grid from "../../components/grid"
 
-const Home = () => {
+const Subscriptions = () => {
     const [subscriptions, setSubscriptions] = useState();
 
     useEffect(() => {
@@ -14,10 +14,10 @@ const Home = () => {
 
     return (
         <>
-            <h1>Subscriptions</h1>
+            <h1 className="mb-2">Subscriptions</h1>
             <Grid items={subscriptions}></Grid>
         </>
     )
 }
 
-export default Home;
+export default Subscriptions;

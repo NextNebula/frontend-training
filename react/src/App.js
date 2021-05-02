@@ -2,7 +2,7 @@ import "./App.css";
 import Header from "./components/header";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Search from "./pages/search";
-import Home from "./pages/home";
+import Subscriptions from "./pages/subscriptions";
 import Podcast from "./pages/podcast";
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
               <Podcast/>
             </Route>
             <Route path="/">
-              <Home/>
+              <Subscriptions/>
             </Route>
           </Switch>
         </div>
