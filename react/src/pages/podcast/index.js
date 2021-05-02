@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { getPodcastDetails, postSubscription } from "../../services/getService";
+import { getPodcastDetails, postSubscribe, postUnsubscribe } from "../../services/getService";
 
 const Podcast = () => {
     const { id } = useParams();
@@ -14,7 +14,19 @@ const Podcast = () => {
     }, [id])
 
     const subscribe = async () => {
-        await postSubscription(id);
+        await postSubscribe(id);
+        setPodcast({
+            ...podcast,
+            isSubscribed: true
+        });
+    }
+
+    const unsubscribe = async () => {
+        await postUnsubscribe(id);
+        setPodcast({
+            ...podcast,
+            isSubscribed: false
+        });
     }
 
     return (
@@ -24,6 +36,7 @@ const Podcast = () => {
                 <img className="w-72" src={podcast.image} alt={podcast.name}/>
                 <div className="mx-2 flex-grow">
                     {!podcast.isSubscribed && <button className="button float-right" onClick={subscribe}>Subscribe</button>}
+                    {podcast.isSubscribed && <button className="button float-right" onClick={unsubscribe}>Unsubscribe</button>}
                     <h1 className="mb-2">{podcast.name}</h1>
                     <div>{podcast.description}</div>
                 </div>

@@ -37,6 +37,13 @@ async function postResults(url, data) {
   });
 }
 
+async function deleteResults(url) {
+  return await fetch(url, 
+    {
+      method: "delete"
+    });
+}
+
 const searchPodcast = async (query) => {
   const data = await fetchResults(`https://itunes.apple.com/search?entity=podcast&term=${query}`)
   return data.results.map(details => {
@@ -66,16 +73,18 @@ const podcastDetails = async (id) => {
   }
 };
 
-const createSubscription = async (data) => {
-  const itunesDetailsData = await getItunesDetails(data.id);
+const createSubscription = async (id) => {
+  const itunesDetailsData = await getItunesDetails(id);
   const itunesDetails = itunesDetailsData.results[0];
 
   await postResults(dbUrl, { 
-    id: data.id,
+    id: id,
     name: itunesDetails?.collectionName,
     image: itunesDetails?.artworkUrl600
   });
 }
+
+const deleteSubscription = async (id) => await deleteResults(`${dbUrl}/${id}`)
 
 const getSubscriptions = async () => await fetchResults(dbUrl);
 
@@ -84,4 +93,5 @@ module.exports = {
   podcastDetails,
   createSubscription,
   getSubscriptions,
+  deleteSubscription
 }

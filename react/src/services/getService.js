@@ -16,13 +16,15 @@ export async function getPodcastDetails(id) {
   });
 }
 
-export async function postSubscription(id) {
-  return await fetch(`${url}/subscribe`, {
+export async function postSubscribe(id) {
+  return await fetch(`${url}/subscribe/${id}`, {
     method: "post",
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({id})
+  });
+}
+
+export async function postUnsubscribe(id) {
+  return await fetch(`${url}/unsubscribe/${id}`, {
+    method: "post",
   });
 }
 
