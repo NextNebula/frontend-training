@@ -19,10 +19,16 @@ const Podcast = () => {
 
     return (
         !podcast ? null :
-        <div className="flex justify-between">
-            <h1>{podcast.trackName}</h1>
-            <button class="button" onClick={subscribe}>Subscribe</button>
-        </div>
+        <>
+            <div className="flex justify-between items-start">
+                <img className="w-1/4" src={podcast.image} alt={podcast.name}/>
+                <div className="mx-2">
+                    <h1 className="mb-2">{podcast.name}</h1>
+                    <div>{podcast.description}</div>
+                </div>
+                <button className="button" onClick={subscribe}>Subscribe</button>
+            </div>
+        </>
     )
 }
 
