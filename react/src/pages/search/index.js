@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+
+import Grid from '../../components/grid';
 import { getSearch } from "./../../services/getService";
 
 const Search = () => {
@@ -26,15 +27,8 @@ const Search = () => {
               className="w-6/12 px-2 py-1 mb-2 border border-gray-300 bg-gray-100 rounded-md outline-none focus:border-blue-500"
               type="text"
               placeholder="Search"
-              onChange={e => setQuery(e.target.value)} />
-            <div className="grid grid-cols-4 gap-2">
-            {results.map((result) => 
-              <Link to={`podcast/${result.id}`} key={result.id}>
-                <img src={result.image} className="w-full rounded-md shadow" alt={result.name}></img>
-                <div className="text-center">{result.name}</div>
-              </Link>
-            )}
-            </div>
+              onChange={e => setQuery(e.target.value)} />     
+            <Grid results={results} />
         </>
     )
 }
