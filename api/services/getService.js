@@ -74,8 +74,11 @@ const createSubscription = async (data) => {
   });
 }
 
+const getSubscriptions = async () => await fetchResults(dbUrl);
+
 module.exports = {
   searchPodcast,
   podcastDetails,
   createSubscription,
+  getSubscriptions,
 }
