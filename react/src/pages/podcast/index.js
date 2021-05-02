@@ -20,9 +20,9 @@ const Podcast = () => {
     return (
         !podcast ? null :
         <>
-            <div className="flex justify-between items-start">
+            <div className="flex items-start">
                 <img className="w-1/4" src={podcast.image} alt={podcast.name}/>
-                <div className="mx-2">
+                <div className="mx-2 flex-grow">
                     <h1 className="mb-2">{podcast.name}</h1>
                     <div>{podcast.description}</div>
                 </div>
