@@ -48,29 +48,32 @@ const searchPodcast = async (query) => {
   }); 
 };
 
-const getItunesPodcastDetails = async (id) => await fetchResults(`https://itunes.apple.com/lookup?id=${id}`);
+const getItunesDetails = async (id) => await fetchResults(`https://itunes.apple.com/lookup?id=${id}`);
+const getDatabaseDetails = async (id) => await fetchResults(`${dbUrl}/${id}`);
 
 const podcastDetails = async (id) => {
-  const detailsData = await getItunesPodcastDetails(id);
-  const details = detailsData.results[0];
+  const itunesDetailsData = await getItunesDetails(id);
+  const itunesDetails = itunesDetailsData.results[0];
+  const dbDetails = await getDatabaseDetails(id);
   
-  const feed = await fetchRssResults(details.feedUrl);
+  const feed = await fetchRssResults(itunesDetails.feedUrl);
 
   return {
-    name: details?.collectionName,
-    image: details?.artworkUrl600,
+    name: itunesDetails?.collectionName,
+    image: itunesDetails?.artworkUrl600,
     description: htmlToText(feed?.rss?.channel?.description),
+    isSubscribed: !!dbDetails
   }
 };
 
 const createSubscription = async (data) => {
-  const detailsData = await getItunesPodcastDetails(data.id);
-  const details = detailsData.results[0];
+  const itunesDetailsData = await getItunesDetails(data.id);
+  const itunesDetails = itunesDetailsData.results[0];
 
   await postResults(dbUrl, { 
     id: data.id,
-    name: details?.collectionName,
-    image: details?.artworkUrl600
+    name: itunesDetails?.collectionName,
+    image: itunesDetails?.artworkUrl600
   });
 }
 
