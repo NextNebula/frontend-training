@@ -28,7 +28,7 @@ const Podcast = () => {
                     <h1 className="mb-2">{podcast.name}</h1>
                     <div>{podcast.description}</div>
                 </div>
-                <button className="button" onClick={subscribe}>Subscribe</button>
+                {!podcast.isSubscribed && <button className="button" onClick={subscribe}>Subscribe</button>}
             </div>
         </>
     )
