@@ -48,9 +48,11 @@ const searchPodcast = async (query) => {
   }); 
 };
 
+const getItunesPodcastDetails = async (id) => await fetchResults(`https://itunes.apple.com/lookup?id=${id}`);
+
 const podcastDetails = async (id) => {
-  const data = await fetchResults(`https://itunes.apple.com/lookup?id=${id}`);
-  const details = data.results[0];
+  const detailsData = await getItunesPodcastDetails(id);
+  const details = detailsData.results[0];
   
   const feed = await fetchRssResults(details.feedUrl);
 
@@ -60,7 +62,17 @@ const podcastDetails = async (id) => {
     description: htmlToText(feed?.rss?.channel?.description),
   }
 };
-const createSubscription = async (data) => await postResults(dbUrl, { id: data.id, name: "test" })
+
+const createSubscription = async (data) => {
+  const detailsData = await getItunesPodcastDetails(data.id);
+  const details = detailsData.results[0];
+
+  await postResults(dbUrl, { 
+    id: data.id,
+    name: details?.collectionName,
+    image: details?.artworkUrl600
+  });
+}
 
 module.exports = {
   searchPodcast,
