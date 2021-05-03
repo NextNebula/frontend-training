@@ -14,6 +14,6 @@ app.get('/search/:query', (req, res) => services.searchPodcast(req.params.query)
 app.get('/podcast/:id', (req, res) => services.podcastDetails(req.params.id).then(result => res.send(`${JSON.stringify(result)}`)));
 app.post('/subscribe/:id', (req, res) => services.createSubscription(req.params.id).then(res.sendStatus(200)));
 app.post('/unsubscribe/:id', (req, res) => services.deleteSubscription(req.params.id).then(res.sendStatus(200)));
-app.get('/subscriptions', (req, res) => services.getSubscriptions().then(result => res.send(`${JSON.stringify(result)}`)))
+app.get('/subscriptions', (req, res) => services.getSubscriptions().then(result => res.send(`${JSON.stringify(result)}`)));
 
 app.listen(PORT, () => console.log("Server is running on port " + PORT));

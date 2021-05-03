@@ -32,8 +32,8 @@ const Podcast = () => {
     return (
         !podcast ? null :
         <>
-            <div className="flex items-start">
-                <img className="w-72" src={podcast.image} alt={podcast.name}/>
+            <div className="flex items-start mb-4">
+                <img className="w-72 rounded-md shadow" src={podcast.image} alt={podcast.name}/>
                 <div className="mx-2 flex-grow">
                     {!podcast.isSubscribed && <button className="button float-right" onClick={subscribe}>Subscribe</button>}
                     {podcast.isSubscribed && <button className="button float-right" onClick={unsubscribe}>Unsubscribe</button>}
@@ -41,6 +41,7 @@ const Podcast = () => {
                     <div>{podcast.description}</div>
                 </div>
             </div>
+            {podcast.episodes.map((episode, index) => <div key={index} className="bg-gray-100 mb-2 p-2 rounded-md shadow">{episode.title}</div>)}
         </>
     )
 }
