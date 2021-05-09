@@ -3,21 +3,30 @@ import { Component, h } from '@stencil/core';
 @Component({
   tag: 'app-root',
   styleUrl: 'app-root.css',
-  shadow: true,
 })
 export class AppRoot {
   render() {
     return (
       <div>
-        <header>
-          <h1>Stencil App Starter</h1>
+        <header class="mb-4 bg-blue-500">
+        <div class="container mx-auto">
+                <nav>
+                    <ul class="flex ">
+                        <li>
+                          <stencil-route-link url="/" exact={true} class="nav-link">Home</stencil-route-link>
+                        </li>
+                        <li>
+                          <stencil-route-link url="/search" class="nav-link">Search</stencil-route-link>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </header>
-
         <main>
           <stencil-router>
             <stencil-route-switch scrollTopOffset={0}>
               <stencil-route url="/" component="app-home" exact={true} />
-              <stencil-route url="/profile/:name" component="app-profile" />
+              <stencil-route url="/search" component="app-search" />
             </stencil-route-switch>
           </stencil-router>
         </main>
