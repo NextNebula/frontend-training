@@ -1,4 +1,24 @@
 {
   "podcasts": [
+    {
+      "id": "356445669",
+      "name": "Gamersnet Podcast",
+      "image": "https://is5-ssl.mzstatic.com/image/thumb/Podcasts123/v4/1c/2c/e6/1c2ce60b-a380-6d35-f51d-cc3749ba3857/mza_6760803104133242423.jpg/600x600bb.jpg"
+    },
+    {
+      "id": "1200361736",
+      "name": "The Daily",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts124/v4/71/52/e5/7152e586-12ad-3cfd-9058-ad6011433463/mza_5306150330714933265.jpeg/600x600bb.jpg"
+    },
+    {
+      "id": "638203140",
+      "name": "Echt Gebeurd",
+      "image": "https://is4-ssl.mzstatic.com/image/thumb/Podcasts123/v4/e1/73/40/e1734098-b6c9-8986-7479-907bade880f7/mza_84099633451203063.jpeg/600x600bb.jpg"
+    },
+    {
+      "id": "1343812967",
+      "name": "Holleeder - De Finale",
+      "image": "https://is2-ssl.mzstatic.com/image/thumb/Podcasts113/v4/e1/13/9c/e1139cb9-d922-a166-fabe-2535362f626c/mza_707623833125563578.jpeg/600x600bb.jpg"
+    }
   ]
 }

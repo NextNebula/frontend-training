@@ -1,0 +1,25 @@
+{
+  "name": "crudapp",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Stencil App Starter",
+  "scripts": {
+    "postinstall": "run-p install:*",
+    "install:api": "cd ../api && npm install",
+    "install:database": "cd ../database && npm install",
+    "start": "run-p start:*",
+    "start:app": "stencil build --dev --watch --serve",
+    "start:api": "cd ../api && npm start",
+    "start:database": "cd ../database && npm start",
+    "build": "stencil build",
+    "test": "stencil test --spec --e2e",
+    "test.watch": "stencil test --spec --e2e --watchAll",
+    "generate": "stencil generate"
+  },
+  "devDependencies": {
+    "@stencil/core": "^2.0.0",
+    "@stencil/router": "^1.0.1",
+    "npm-run-all": "^4.1.5"
+  },
+  "license": "MIT"
+}
