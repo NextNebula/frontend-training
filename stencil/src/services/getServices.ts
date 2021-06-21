@@ -7,3 +7,11 @@ export async function getSearchResults(query) {
       }
     });
 }
+
+export async function getSubscriptions() {
+  return await fetch(`${url}/subscriptions`).then((response) => {
+    if (response.ok) {
+      return response.json();
+    }
+  });
+}
