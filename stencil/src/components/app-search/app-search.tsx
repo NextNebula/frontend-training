@@ -13,7 +13,6 @@ export class AppSearch {
     if (query) {
       var searchResults = await getSearchResults(query);
       this.results = searchResults;
-      console.log(this.results);
     }
     else {
       this.results = [];
@@ -30,9 +29,7 @@ export class AppSearch {
           placeholder="Search"
           onInput={this.performSearch}
         />
-        {this.results.map((result) =>
-          <div>{result.name}</div>
-        )}
+        <item-grid items={this.results}></item-grid>
       </div>
     );
   }

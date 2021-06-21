@@ -12,6 +12,9 @@ export namespace Components {
     }
     interface AppSearch {
     }
+    interface ItemGrid {
+        "items": any[];
+    }
 }
 declare global {
     interface HTMLAppHomeElement extends Components.AppHome, HTMLStencilElement {
@@ -32,10 +35,17 @@ declare global {
         prototype: HTMLAppSearchElement;
         new (): HTMLAppSearchElement;
     };
+    interface HTMLItemGridElement extends Components.ItemGrid, HTMLStencilElement {
+    }
+    var HTMLItemGridElement: {
+        prototype: HTMLItemGridElement;
+        new (): HTMLItemGridElement;
+    };
     interface HTMLElementTagNameMap {
         "app-home": HTMLAppHomeElement;
         "app-root": HTMLAppRootElement;
         "app-search": HTMLAppSearchElement;
+        "item-grid": HTMLItemGridElement;
     }
 }
 declare namespace LocalJSX {
@@ -45,10 +55,14 @@ declare namespace LocalJSX {
     }
     interface AppSearch {
     }
+    interface ItemGrid {
+        "items"?: any[];
+    }
     interface IntrinsicElements {
         "app-home": AppHome;
         "app-root": AppRoot;
         "app-search": AppSearch;
+        "item-grid": ItemGrid;
     }
 }
 export { LocalJSX as JSX };
@@ -58,6 +72,7 @@ declare module "@stencil/core" {
             "app-home": LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "app-search": LocalJSX.AppSearch & JSXBase.HTMLAttributes<HTMLAppSearchElement>;
+            "item-grid": LocalJSX.ItemGrid & JSXBase.HTMLAttributes<HTMLItemGridElement>;
         }
     }
 }
