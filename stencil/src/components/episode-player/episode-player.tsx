@@ -4,31 +4,26 @@ import { Component, h, Prop, State, Watch } from '@stencil/core';
     tag: 'episode-player',
 })
 export class EpisodePlayer {
-    @State() audio: HTMLAudioElement;
+    @State() audio = new Audio();
     @State() isPlaying = false;
     @Prop({ attribute: 'episode' }) episode: any;
   
     @Watch('episode')
-    audioHandler() {
-        this.audio.load();
-        this.audio = null;
+    audioEpisodeHandler(newEpisode) {
         this.isPlaying = false;
+        this.audio.setAttribute('src', newEpisode.media);
+        this.audio.load();
     }
 
-    onClickPlayPauseHandler(media) {
-        if (this.audio) {
-            if (!this.audio.paused) {
-                this.audio.pause();
-                this.isPlaying = false;
-                
-            }
-            else {
-                this.audio.play();
-                this.isPlaying = true;
-            }
+    private onClickPlayPauseHandler = () => {
+        if (!this.audio)
+            return;
+
+        if (!this.audio.paused) {
+            this.audio.pause();
+            this.isPlaying = false;
         }
         else {
-            this.audio = new Audio(media);
             this.audio.play();
             this.isPlaying = true;
         }
@@ -38,7 +33,7 @@ export class EpisodePlayer {
         return (
             this.episode && 
             <div class="flex">
-                <div onClick={() => this.onClickPlayPauseHandler(this.episode.media)} class="inline-block mr-1 cursor-pointer">
+                <div onClick={this.onClickPlayPauseHandler} class="inline-block mr-1 cursor-pointer">
                     {!this.isPlaying && <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
                     </svg>}
