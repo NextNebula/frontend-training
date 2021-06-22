@@ -15,3 +15,11 @@ export async function getSubscriptions() {
     }
   });
 }
+
+export async function getPodcastDetails(id) {
+  return await fetch(`${url}/podcast/${id}`).then((response) => {
+    if (response.ok) {
+      return response.json();
+    }
+  });
+}

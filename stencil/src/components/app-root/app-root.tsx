@@ -27,6 +27,7 @@ export class AppRoot {
             <stencil-route-switch scrollTopOffset={0}>
               <stencil-route url="/" component="app-subscriptions" exact={true} />
               <stencil-route url="/search" component="app-search" />
+              <stencil-route url="/podcast/:id" component="app-podcast" />
             </stencil-route-switch>
           </stencil-router>
         </main>

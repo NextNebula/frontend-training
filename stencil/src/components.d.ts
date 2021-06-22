@@ -5,7 +5,12 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { MatchResults } from "@stencil/router";
 export namespace Components {
+    interface AppPodcast {
+        "match": MatchResults;
+        "podcast": any;
+    }
     interface AppRoot {
     }
     interface AppSearch {
@@ -17,11 +22,11 @@ export namespace Components {
     }
 }
 declare global {
-    interface HTMLAppHomeElement extends Components.AppHome, HTMLStencilElement {
+    interface HTMLAppPodcastElement extends Components.AppPodcast, HTMLStencilElement {
     }
-    var HTMLAppHomeElement: {
-        prototype: HTMLAppHomeElement;
-        new (): HTMLAppHomeElement;
+    var HTMLAppPodcastElement: {
+        prototype: HTMLAppPodcastElement;
+        new (): HTMLAppPodcastElement;
     };
     interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {
     }
@@ -48,6 +53,7 @@ declare global {
         new (): HTMLItemGridElement;
     };
     interface HTMLElementTagNameMap {
+        "app-podcast": HTMLAppPodcastElement;
         "app-root": HTMLAppRootElement;
         "app-search": HTMLAppSearchElement;
         "app-subscriptions": HTMLAppSubscriptionsElement;
@@ -55,16 +61,21 @@ declare global {
     }
 }
 declare namespace LocalJSX {
-    interface AppHome {
+    interface AppPodcast {
+        "match"?: MatchResults;
+        "podcast"?: any;
     }
     interface AppRoot {
     }
     interface AppSearch {
     }
+    interface AppSubscriptions {
+    }
     interface ItemGrid {
         "items"?: any[];
     }
     interface IntrinsicElements {
+        "app-podcast": AppPodcast;
         "app-root": AppRoot;
         "app-search": AppSearch;
         "app-subscriptions": AppSubscriptions;
@@ -75,6 +86,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "app-podcast": LocalJSX.AppPodcast & JSXBase.HTMLAttributes<HTMLAppPodcastElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "app-search": LocalJSX.AppSearch & JSXBase.HTMLAttributes<HTMLAppSearchElement>;
             "app-subscriptions": LocalJSX.AppSubscriptions & JSXBase.HTMLAttributes<HTMLAppSubscriptionsElement>;
