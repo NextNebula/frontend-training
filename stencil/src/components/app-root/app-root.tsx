@@ -1,26 +1,37 @@
-import { Component, h } from '@stencil/core';
+import { Component, h, Listen, State } from '@stencil/core';
 
 @Component({
   tag: 'app-root',
   styleUrl: 'app-root.css',
 })
 export class AppRoot {
+  @State() episode: any;
+
+  //Has to be at root component because of event bubbling
+  @Listen('playEpisode')
+  playEpisodeHandler(event: CustomEvent<any>) {
+      this.episode = event.detail;
+  }
+
   render() {
     return (
       <div>
         <header class="mb-4 bg-blue-500">
-        <div class="container mx-auto">
-          <nav>
-            <ul class="flex">
-              <li>
-                <stencil-route-link url="/" exact={true} class="nav-link">Home</stencil-route-link>
-              </li>
-              <li>
-                <stencil-route-link url="/search" class="nav-link">Search</stencil-route-link>
-              </li>
-            </ul>
-          </nav>
-        </div>
+          <div class="container mx-auto flex">
+            <nav class="flex-grow">
+              <ul class="flex">
+                <li>
+                  <stencil-route-link url="/" exact={true} class="nav-link">Home</stencil-route-link>
+                </li>
+                <li>
+                  <stencil-route-link url="/search" class="nav-link">Search</stencil-route-link>
+                </li>
+              </ul>
+            </nav>
+            <div class="self-center text-white">
+              <episode-player episode={this.episode}></episode-player>
+            </div>
+          </div>
         </header>
         <main class="container mx-auto px-2">
           <stencil-router>

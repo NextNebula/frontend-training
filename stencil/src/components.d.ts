@@ -17,6 +17,9 @@ export namespace Components {
     }
     interface AppSubscriptions {
     }
+    interface EpisodePlayer {
+        "episode": any;
+    }
     interface ItemGrid {
         "items": any[];
     }
@@ -46,6 +49,12 @@ declare global {
         prototype: HTMLAppSubscriptionsElement;
         new (): HTMLAppSubscriptionsElement;
     };
+    interface HTMLEpisodePlayerElement extends Components.EpisodePlayer, HTMLStencilElement {
+    }
+    var HTMLEpisodePlayerElement: {
+        prototype: HTMLEpisodePlayerElement;
+        new (): HTMLEpisodePlayerElement;
+    };
     interface HTMLItemGridElement extends Components.ItemGrid, HTMLStencilElement {
     }
     var HTMLItemGridElement: {
@@ -57,12 +66,14 @@ declare global {
         "app-root": HTMLAppRootElement;
         "app-search": HTMLAppSearchElement;
         "app-subscriptions": HTMLAppSubscriptionsElement;
+        "episode-player": HTMLEpisodePlayerElement;
         "item-grid": HTMLItemGridElement;
     }
 }
 declare namespace LocalJSX {
     interface AppPodcast {
         "match"?: MatchResults;
+        "onPlayEpisode"?: (event: CustomEvent<any>) => void;
         "podcast"?: any;
     }
     interface AppRoot {
@@ -70,6 +81,9 @@ declare namespace LocalJSX {
     interface AppSearch {
     }
     interface AppSubscriptions {
+    }
+    interface EpisodePlayer {
+        "episode"?: any;
     }
     interface ItemGrid {
         "items"?: any[];
@@ -79,6 +93,7 @@ declare namespace LocalJSX {
         "app-root": AppRoot;
         "app-search": AppSearch;
         "app-subscriptions": AppSubscriptions;
+        "episode-player": EpisodePlayer;
         "item-grid": ItemGrid;
     }
 }
@@ -90,6 +105,7 @@ declare module "@stencil/core" {
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "app-search": LocalJSX.AppSearch & JSXBase.HTMLAttributes<HTMLAppSearchElement>;
             "app-subscriptions": LocalJSX.AppSubscriptions & JSXBase.HTMLAttributes<HTMLAppSubscriptionsElement>;
+            "episode-player": LocalJSX.EpisodePlayer & JSXBase.HTMLAttributes<HTMLEpisodePlayerElement>;
             "item-grid": LocalJSX.ItemGrid & JSXBase.HTMLAttributes<HTMLItemGridElement>;
         }
     }
