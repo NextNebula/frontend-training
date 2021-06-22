@@ -1,11 +1,12 @@
 import { Component, h, State } from '@stencil/core';
 import { getSubscriptions } from '../../services/getServices';
+import { PodcastResult } from '../../types/podcast';
 
 @Component({
   tag: 'app-subscriptions'
 })
 export class AppSubscriptions {
-  @State() results = [];
+  @State() results:PodcastResult[] = [];
 
   async componentWillLoad() {
     const podcastResults = await getSubscriptions();

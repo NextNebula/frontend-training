@@ -1,10 +1,11 @@
 import { Component, h, Prop } from '@stencil/core';
+import { PodcastResult } from '../../types/podcast';
 
 @Component({
     tag: 'item-grid',
 })
 export class ItemGrid {
-    @Prop() items: any[];
+    @Prop() items: PodcastResult[];
 
     render() {
         return(

@@ -1,4 +1,5 @@
 import { Component, h, Prop, State, Watch } from '@stencil/core';
+import { EpisodeDetails } from '../../types/podcast';
 
 @Component({
     tag: 'episode-player',
@@ -6,10 +7,10 @@ import { Component, h, Prop, State, Watch } from '@stencil/core';
 export class EpisodePlayer {
     @State() audio = new Audio();
     @State() isPlaying = false;
-    @Prop({ attribute: 'episode' }) episode: any;
+    @Prop({ attribute: 'episode' }) episode: EpisodeDetails;
   
     @Watch('episode')
-    audioEpisodeHandler(newEpisode) {
+    audioEpisodeHandler(newEpisode: EpisodeDetails) {
         this.isPlaying = false;
         this.audio.setAttribute('src', newEpisode.media);
         this.audio.load();

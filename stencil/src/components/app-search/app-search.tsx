@@ -1,12 +1,13 @@
 import { Component, h, State } from '@stencil/core';
 import { getSearchResults } from '../../services/getServices';
 import debounce from 'lodash/debounce';
+import { PodcastResult } from '../../types/podcast';
 
 @Component({
   tag: 'app-search',
 })
 export class AppSearch {
-  @State() results = [];
+  @State() results: PodcastResult[] = [];
 
   private performSearch = debounce(async (e: Event) => {
     const query = (e.target as HTMLInputElement).value;

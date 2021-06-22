@@ -6,10 +6,11 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { MatchResults } from "@stencil/router";
+import { EpisodeDetails, PodcastDetails, PodcastResult } from "./types/podcast";
 export namespace Components {
     interface AppPodcast {
         "match": MatchResults;
-        "podcast": any;
+        "podcast": PodcastDetails;
     }
     interface AppRoot {
     }
@@ -18,10 +19,10 @@ export namespace Components {
     interface AppSubscriptions {
     }
     interface EpisodePlayer {
-        "episode": any;
+        "episode": EpisodeDetails;
     }
     interface ItemGrid {
-        "items": any[];
+        "items": PodcastResult[];
     }
 }
 declare global {
@@ -73,8 +74,8 @@ declare global {
 declare namespace LocalJSX {
     interface AppPodcast {
         "match"?: MatchResults;
-        "onPlayEpisode"?: (event: CustomEvent<any>) => void;
-        "podcast"?: any;
+        "onPlayEpisode"?: (event: CustomEvent<EpisodeDetails>) => void;
+        "podcast"?: PodcastDetails;
     }
     interface AppRoot {
     }
@@ -83,10 +84,10 @@ declare namespace LocalJSX {
     interface AppSubscriptions {
     }
     interface EpisodePlayer {
-        "episode"?: any;
+        "episode"?: EpisodeDetails;
     }
     interface ItemGrid {
-        "items"?: any[];
+        "items"?: PodcastResult[];
     }
     interface IntrinsicElements {
         "app-podcast": AppPodcast;

@@ -1,14 +1,15 @@
 import { Component, h, Prop, Event, EventEmitter } from '@stencil/core';
 import { MatchResults } from '@stencil/router';
 import { getPodcastDetails, postSubscribe, postUnsubscribe } from '../../services/getServices';
+import { EpisodeDetails, PodcastDetails } from '../../types/podcast';
 
 @Component({
   tag: 'app-podcast'
 })
 export class AppPodcast {
     @Prop() match: MatchResults;
-    @Prop() podcast: any;
-    @Event() playEpisode: EventEmitter<any>;
+    @Prop() podcast: PodcastDetails;
+    @Event() playEpisode: EventEmitter<EpisodeDetails>;
 
     async componentWillLoad() {
         const details = await getPodcastDetails(this.match.params.id);

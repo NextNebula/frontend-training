@@ -1,15 +1,16 @@
 import { Component, h, Listen, State } from '@stencil/core';
+import { EpisodeDetails } from '../../types/podcast';
 
 @Component({
   tag: 'app-root',
   styleUrl: 'app-root.css',
 })
 export class AppRoot {
-  @State() episode: any;
+  @State() episode: EpisodeDetails;
 
   //Has to be at root component because of event bubbling
   @Listen('playEpisode')
-  playEpisodeHandler(event: CustomEvent<any>) {
+  playEpisodeHandler(event: CustomEvent<EpisodeDetails>) {
       this.episode = event.detail;
   }
 
