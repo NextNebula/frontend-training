@@ -23,3 +23,15 @@ export async function getPodcastDetails(id) {
     }
   });
 }
+
+export async function postSubscribe(id) {
+  return await fetch(`${url}/subscribe/${id}`, {
+    method: "post",
+  });
+}
+
+export async function postUnsubscribe(id) {
+  return await fetch(`${url}/unsubscribe/${id}`, {
+    method: "post",
+  });
+}

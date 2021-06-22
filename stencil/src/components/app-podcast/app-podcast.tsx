@@ -1,6 +1,6 @@
 import { Component, h, Prop } from '@stencil/core';
 import { MatchResults } from '@stencil/router';
-import { getPodcastDetails } from '../../services/getServices';
+import { getPodcastDetails, postSubscribe, postUnsubscribe } from '../../services/getServices';
 
 @Component({
   tag: 'app-podcast'
@@ -14,6 +14,22 @@ export class AppPodcast {
         this.podcast = details;
     }
 
+    private subscribe = async () => {
+        await postSubscribe(this.match.params.id);
+        this.podcast = {
+            ...this.podcast,
+            isSubscribed: true
+        };
+    }
+
+    private unsubscribe = async () => {
+        await postUnsubscribe(this.match.params.id);
+        this.podcast = {
+            ...this.podcast,
+            isSubscribed: false
+        };
+    }
+
     render() {
         return (
             !this.podcast ? null :
@@ -21,6 +37,8 @@ export class AppPodcast {
                 <div class="flex items-start mb-4">
                     <img class="w-72 rounded-md shadow" src={this.podcast.image} alt={this.podcast.name}/>
                     <div class="mx-2 flex-grow">
+                        {!this.podcast.isSubscribed && <button class="button float-right" onClick={this.subscribe}>Subscribe</button>}
+                        {this.podcast.isSubscribed && <button class="button float-right" onClick={this.unsubscribe}>Unsubscribe</button>}
                         <h1 class="mb-2">{this.podcast.name}</h1>
                         <div>{this.podcast.description}</div>
                     </div>
