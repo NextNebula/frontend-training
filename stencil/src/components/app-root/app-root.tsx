@@ -10,19 +10,19 @@ export class AppRoot {
       <div>
         <header class="mb-4 bg-blue-500">
         <div class="container mx-auto">
-                <nav>
-                    <ul class="flex ">
-                        <li>
-                          <stencil-route-link url="/" exact={true} class="nav-link">Home</stencil-route-link>
-                        </li>
-                        <li>
-                          <stencil-route-link url="/search" class="nav-link">Search</stencil-route-link>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+          <nav>
+            <ul class="flex">
+              <li>
+                <stencil-route-link url="/" exact={true} class="nav-link">Home</stencil-route-link>
+              </li>
+              <li>
+                <stencil-route-link url="/search" class="nav-link">Search</stencil-route-link>
+              </li>
+            </ul>
+          </nav>
+        </div>
         </header>
-        <main>
+        <main class="container mx-auto px-2">
           <stencil-router>
             <stencil-route-switch scrollTopOffset={0}>
               <stencil-route url="/" component="app-subscriptions" exact={true} />
