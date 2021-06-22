@@ -1,10 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router";
 import { getPodcastDetails, postSubscribe, postUnsubscribe } from "../../services/getService";
+import { EpisodeContext } from '../../contexts/episodeContext';
+
 
 const Podcast = () => {
     const { id } = useParams();
     const [podcast, setPodcast] = useState();
+
+    const [, setEpisode ] = useContext(EpisodeContext);
 
     useEffect(() => {
         async function getData() {
@@ -29,6 +33,10 @@ const Podcast = () => {
         });
     }
 
+    const handleEpisodeOnclick = (episode) => {
+        setEpisode(episode)
+    }
+
     return (
         !podcast ? null :
         <>
@@ -41,7 +49,7 @@ const Podcast = () => {
                     <div>{podcast.description}</div>
                 </div>
             </div>
-            {podcast.episodes.map((episode, index) => <div key={index} className="bg-gray-100 mb-2 p-2 rounded-md shadow">{episode.title}</div>)}
+            {podcast.episodes.map((episode, index) => <div key={index} onClick={() => handleEpisodeOnclick(episode)} className="bg-gray-100 mb-2 p-2 rounded-md shadow">{episode.title}</div>)}
         </>
     )
 }
