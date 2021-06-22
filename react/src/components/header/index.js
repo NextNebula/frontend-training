@@ -5,7 +5,7 @@ import "./header.css"
 const Header = () => {
     return (
         <header className="mb-4 bg-blue-500">
-            <div className="container mx-auto flex">
+            <div className="container mx-auto flex pr-2">
                 <nav className="flex-grow">
                     <ul className="flex py-2">
                         <li>

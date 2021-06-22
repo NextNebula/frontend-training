@@ -40,8 +40,8 @@ export class AppPodcast {
             !this.podcast ? null :
             <div>
                 <div class="flex items-start mb-4">
-                    <img class="w-72 rounded-md shadow" src={this.podcast.image} alt={this.podcast.name}/>
-                    <div class="mx-2 flex-grow">
+                    <img class="w-72 rounded-md shadow mr-2" src={this.podcast.image} alt={this.podcast.name}/>
+                    <div class="flex-grow">
                         {!this.podcast.isSubscribed && <button class="button float-right" onClick={this.subscribe}>Subscribe</button>}
                         {this.podcast.isSubscribed && <button class="button float-right" onClick={this.unsubscribe}>Unsubscribe</button>}
                         <h1 class="mb-2">{this.podcast.name}</h1>

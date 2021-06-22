@@ -41,8 +41,8 @@ const Podcast = () => {
         !podcast ? null :
         <>
             <div className="flex items-start mb-4">
-                <img className="w-72 rounded-md shadow" src={podcast.image} alt={podcast.name}/>
-                <div className="mx-2 flex-grow">
+                <img className="w-72 rounded-md shadow mr-2" src={podcast.image} alt={podcast.name}/>
+                <div className="flex-grow">
                     {!podcast.isSubscribed && <button className="button float-right" onClick={subscribe}>Subscribe</button>}
                     {podcast.isSubscribed && <button className="button float-right" onClick={unsubscribe}>Unsubscribe</button>}
                     <h1 className="mb-2">{podcast.name}</h1>
