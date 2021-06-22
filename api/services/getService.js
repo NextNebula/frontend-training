@@ -68,7 +68,7 @@ const podcastDetails = async (id) => {
     feed = await fetchRssResults(itunesDetails.feedUrl);
   }
 
-  const episodes = feed?.rss.channel.item.map(_ => { return { title: _.title }})
+  const episodes = Array.isArray(feed?.rss.channel.item) ? feed?.rss.channel.item.map(_ => { return { title: _.title }}) : [];
 
   return {
     name: itunesDetails?.collectionName,
