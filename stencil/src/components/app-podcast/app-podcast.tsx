@@ -25,7 +25,7 @@ export class AppPodcast {
                         <div>{this.podcast.description}</div>
                     </div>
                 </div>
-                {this.podcast.episodes.map((episode, index) => <div key={index} class="bg-gray-100 mb-2 p-2 rounded-md shadow">{episode.title}</div>)}
+                {this.podcast.episodes?.map((episode, index) => <div key={index} class="bg-gray-100 mb-2 p-2 rounded-md shadow">{episode.title}</div>)}
             </div>
     );
   }
