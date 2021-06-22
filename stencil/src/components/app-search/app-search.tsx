@@ -17,7 +17,7 @@ export class AppSearch {
     else {
       this.results = [];
     }
-  }, 300);
+  }, 500);
 
   render() {
     return (
