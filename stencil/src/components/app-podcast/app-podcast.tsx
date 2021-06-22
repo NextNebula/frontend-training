@@ -1,7 +1,7 @@
 import { Component, h, Prop, Event, EventEmitter } from '@stencil/core';
 import { MatchResults } from '@stencil/router';
 import { getPodcastDetails, postSubscribe, postUnsubscribe } from '../../services/getServices';
-import { EpisodeDetails, PodcastDetails } from '../../types/podcast';
+import { EpisodePlay, EpisodeDetails, PodcastDetails } from '../../types/podcast';
 
 @Component({
   tag: 'app-podcast'
@@ -9,7 +9,7 @@ import { EpisodeDetails, PodcastDetails } from '../../types/podcast';
 export class AppPodcast {
     @Prop() match: MatchResults;
     @Prop() podcast: PodcastDetails;
-    @Event() playEpisode: EventEmitter<EpisodeDetails>;
+    @Event() playEpisode: EventEmitter<EpisodePlay>;
 
     async componentWillLoad() {
         const details = await getPodcastDetails(this.match.params.id);
@@ -32,8 +32,8 @@ export class AppPodcast {
         };
     }
 
-    private onClickEpisodeHandler = (episode) => {
-        this.playEpisode.emit(episode);
+    private onClickEpisodeHandler = (episode: EpisodeDetails) => {
+        this.playEpisode.emit({ episode, podcast: this.podcast });
     }
 
     render() {

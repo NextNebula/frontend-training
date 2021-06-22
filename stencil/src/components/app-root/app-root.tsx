@@ -1,17 +1,17 @@
 import { Component, h, Listen, State } from '@stencil/core';
-import { EpisodeDetails } from '../../types/podcast';
+import { EpisodePlay } from '../../types/podcast';
 
 @Component({
   tag: 'app-root',
   styleUrl: 'app-root.css',
 })
 export class AppRoot {
-  @State() episode: EpisodeDetails;
+  @State() episodePlay: EpisodePlay;
 
   //Has to be at root component because of event bubbling
   @Listen('playEpisode')
-  playEpisodeHandler(event: CustomEvent<EpisodeDetails>) {
-      this.episode = event.detail;
+  playEpisodeHandler(event: CustomEvent<EpisodePlay>) {
+      this.episodePlay = event.detail;
   }
 
   render() {
@@ -30,7 +30,7 @@ export class AppRoot {
               </ul>
             </nav>
             <div class="self-center text-white">
-              <episode-player episode={this.episode}></episode-player>
+              <episode-player episodePlay={this.episodePlay}></episode-player>
             </div>
           </div>
         </header>

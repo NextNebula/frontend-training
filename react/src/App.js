@@ -4,12 +4,12 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Search from "./pages/search";
 import Subscriptions from "./pages/subscriptions";
 import Podcast from "./pages/podcast";
-import { EpisodeContextProvider } from "./contexts/episodeContext"
+import { EpisodePlayContextProvider } from "./contexts/episodePlayContext"
 
 function App() {
   return (
     <div className="App">
-      <EpisodeContextProvider>
+      <EpisodePlayContextProvider>
         <Router>
           <Header/>
           <div className="container mx-auto px-2">
@@ -26,7 +26,7 @@ function App() {
             </Switch>
           </div>
         </Router>
-      </EpisodeContextProvider>
+      </EpisodePlayContextProvider>
     </div>
   );
 }

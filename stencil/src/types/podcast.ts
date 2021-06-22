@@ -17,3 +17,8 @@ export interface EpisodeDetails {
   title: string;
   media: string;
 }
+
+export interface EpisodePlay {
+  podcast: PodcastDetails;
+  episode: EpisodeDetails;
+}
