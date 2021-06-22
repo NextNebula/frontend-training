@@ -28,6 +28,7 @@ export class AppSearch {
           type="text"
           placeholder="Search"
           onInput={this.performSearch}
+          autoComplete="off"
         />
         <item-grid items={this.results}></item-grid>
       </div>
