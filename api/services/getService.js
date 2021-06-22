@@ -18,7 +18,7 @@ async function fetchRssResults(url) {
       return response.text();
     }
   }).then((data) => {
-    return parser.parse(data);
+    return parser.parse(data, { ignoreAttributes: false});
   })
 }
 
@@ -68,8 +68,13 @@ const podcastDetails = async (id) => {
     feed = await fetchRssResults(itunesDetails.feedUrl);
   }
 
-  const episodes = Array.isArray(feed?.rss.channel.item) ? feed?.rss.channel.item.map(_ => { return { title: _.title }}) : [];
-
+  const episodes = Array.isArray(feed?.rss.channel.item)
+    ? feed?.rss.channel.item.map(_ => { return { 
+        title: _.title,
+        media: _.enclosure["@_url"]
+      }})
+    : [];
+    
   return {
     name: itunesDetails?.collectionName,
     image: itunesDetails?.artworkUrl600,
