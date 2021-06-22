@@ -17,6 +17,7 @@ export class AppRoot {
   render() {
     return (
       <div>
+        {/* TODO make header component */}
         <header class="mb-4 bg-blue-500">
           <div class="container mx-auto flex pr-2">
             <nav class="flex-grow">
