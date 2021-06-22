@@ -6,11 +6,11 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface AppHome {
-    }
     interface AppRoot {
     }
     interface AppSearch {
+    }
+    interface AppSubscriptions {
     }
     interface ItemGrid {
         "items": any[];
@@ -35,6 +35,12 @@ declare global {
         prototype: HTMLAppSearchElement;
         new (): HTMLAppSearchElement;
     };
+    interface HTMLAppSubscriptionsElement extends Components.AppSubscriptions, HTMLStencilElement {
+    }
+    var HTMLAppSubscriptionsElement: {
+        prototype: HTMLAppSubscriptionsElement;
+        new (): HTMLAppSubscriptionsElement;
+    };
     interface HTMLItemGridElement extends Components.ItemGrid, HTMLStencilElement {
     }
     var HTMLItemGridElement: {
@@ -42,9 +48,9 @@ declare global {
         new (): HTMLItemGridElement;
     };
     interface HTMLElementTagNameMap {
-        "app-home": HTMLAppHomeElement;
         "app-root": HTMLAppRootElement;
         "app-search": HTMLAppSearchElement;
+        "app-subscriptions": HTMLAppSubscriptionsElement;
         "item-grid": HTMLItemGridElement;
     }
 }
@@ -59,9 +65,9 @@ declare namespace LocalJSX {
         "items"?: any[];
     }
     interface IntrinsicElements {
-        "app-home": AppHome;
         "app-root": AppRoot;
         "app-search": AppSearch;
+        "app-subscriptions": AppSubscriptions;
         "item-grid": ItemGrid;
     }
 }
@@ -69,9 +75,9 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "app-home": LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "app-search": LocalJSX.AppSearch & JSXBase.HTMLAttributes<HTMLAppSearchElement>;
+            "app-subscriptions": LocalJSX.AppSubscriptions & JSXBase.HTMLAttributes<HTMLAppSubscriptionsElement>;
             "item-grid": LocalJSX.ItemGrid & JSXBase.HTMLAttributes<HTMLItemGridElement>;
         }
     }
